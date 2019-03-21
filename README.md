@@ -14,3 +14,4 @@ kafka->flink->parquet hdfs + Kafka integration test
 KafkaSingleNodeComposeTest, создает временные папки для zk и kafka, запускает zk и kafka, создает топик test,
 <br> через продюсер в потоке отправляются сообщения, в это время запускается основной класс с флинком и 
 <br> производит запись в hdfs parquet через flink (у вас должен быть запущен хадуп с хдфс)
+<br> p.s. streaming programs are usually not finite and run indefinitely. To complete(terminate) the test of ur main class you need interrupt thread or to insert a special control message into your stream which lets the source properly terminate (simply stop reading more data by leaving the reading loop)
