@@ -4,30 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>test_parquet</groupId>
-    <artifactId>itsumma</artifactId>
+    <groupId>hide42_flink</groupId>
+    <artifactId>flink_parquet</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Primary components -->
         <java.version>1.8</java.version>
         <scala.version>2.11</scala.version>
-        <flink.version>1.6.1</flink.version>
-
-        <!-- Secondary components -->
-        <async.client.version>2.0.39</async.client.version>
-        <logback.version>1.2.3</logback.version>
-        <guava.version>23.0</guava.version>
-        <typesafe.config.version>1.3.3</typesafe.config.version>
-        <ch.driver.version>0.1.40</ch.driver.version>
-
-        <!-- Testing components -->
-        <junit.version>4.12</junit.version>
-        <mockito.version>2.8.9</mockito.version>
-        <awaitility.version>3.1.2</awaitility.version>
-        <testcontainers.version>1.9.1</testcontainers.version>
-        <hikari.version>2.3.8</hikari.version>
-        <jmock.junit4.version>2.9.0</jmock.junit4.version>
+        <flink.version>1.3.0</flink.version>
 
         <!-- Plugins version -->
         <mvn.compiler.version>3.7.0</mvn.compiler.version>
@@ -37,49 +22,34 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>0.10.1.1</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>2.8.7</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.8.7</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>[2.8.7,)</version>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka-0.10_${scala.version}</artifactId>
+            <version>${flink.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka-0.10_2.10</artifactId>
-            <version>1.3.0</version>
+            <artifactId>flink-streaming-java_${scala.version}</artifactId>
+            <version>${flink.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java_2.10</artifactId>
-            <version>1.3.0</version>
+            <artifactId>flink-connector-filesystem_${scala.version}</artifactId>
+            <version>${flink.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-filesystem_2.10</artifactId>
-            <version>1.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-hadoop-compatibility_2.10</artifactId>
-            <version>1.3.0</version>
+            <artifactId>flink-hadoop-compatibility_${scala.version}</artifactId>
+            <version>${flink.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-clients_2.10</artifactId>
+            <artifactId>flink-clients_${scala.version}</artifactId>
             <version>1.3.0</version>
         </dependency>
         <dependency>
@@ -93,19 +63,18 @@
             <version>1.8.1</version>
         </dependency>
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.11</version>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka_${scala.version}</artifactId>
+            <version>0.10.0.1</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.11</artifactId>
-            <version>0.10.0.0</version>
-            <scope>test</scope>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.12</version>
         </dependency>
     </dependencies>
     <build>
-        <finalName>clickhouse</finalName>
+        <finalName>flink_parquet</finalName>
 
 
         <plugins>
